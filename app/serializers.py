@@ -1,6 +1,7 @@
 from rest_framework import serializers 
 from .models import ( City , Lab , Pharmacy , Category , Product , Storage , 
-                     MainStorageOfProducts , PharmacyStorageOfProducts , PharmacyOrder )
+                     MainStorageOfProducts , PharmacyStorageOfProducts , 
+                     PharmacyOrder , MainStorageOrder )
 
 class CitySerializer( serializers.ModelSerializer ) :
     class Meta :
@@ -56,4 +57,11 @@ class PharmacyOrderSerializer( serializers.ModelSerializer ) :
     products = ProductSerializer( read_only = True , many = True ) 
     class Meta :
         model = PharmacyOrder 
+        fields = '__all__' 
+        
+class MainStorageOrderSerializer( serializers.ModelSerializer ) :
+    storage = MainStorageOfProductsSerializer( read_only = True ) 
+    products = ProductSerializer( read_only = True , many = True ) 
+    class Meta :
+        model = MainStorageOrder 
         fields = '__all__' 

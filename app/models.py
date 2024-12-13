@@ -92,3 +92,11 @@ class PharmacyOrder( models.Model ) :
         else :
             raise ValueError( '' )  
         
+class MainStorageOrder( models.Model ) :
+    main_storage = models.ForeignKey( MainStorageOfProducts , on_delete = models.CASCADE , related_name = 'Morder' )
+    products = models.ForeignKey( Product , on_delete = models.CASCADE , related_name = 'ProdMainOrder' ) 
+    quantity = models.PositiveIntegerField( default = 1 ) 
+    order_date = models.DateTimeField( auto_now_add = True ) 
+    
+    class Meta :
+        unique_together = ( 'main_storage' , 'products' , 'order_date' ) 

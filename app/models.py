@@ -34,6 +34,7 @@ class Category( models.Model ) :
     
 class Product( models.Model ) :
     name = models.CharField( max_length = 50 , null = False , blank = False ) 
+    composition = models.CharField( max_length = 100 , null = False , blank = False ) 
     type = models.CharField( max_length = 50 , null = False , blank = False ) 
     dose = models.DecimalField( max_digits = 10 , decimal_places = 3 , null = True , blank = True )
     category = models.ForeignKey( Category , on_delete = models.CASCADE , related_name = 'ProdCat' ) 

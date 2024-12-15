@@ -9,7 +9,7 @@ class CitySerializer( serializers.ModelSerializer ) :
         fields = '__all__' 
         
 class LabSerializer( serializers.ModelSerializer ) :
-    city = CitySerializer( read_only = True ) 
+    city = CitySerializer( read_only = True )  
     class Meta :
         model = Lab 
         fields = '__all__' 

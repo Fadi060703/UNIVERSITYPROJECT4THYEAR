@@ -18,7 +18,7 @@ class Lab( models.Model ) :
 class Pharmacy( models.Model ) :
     name = models.CharField( max_length = 50 , null = False , blank = False , unique = True ) 
     owner = models.CharField( max_length = 50 , null = False , blank = False )
-    city = models.ForeignKey( City , on_delete = models.CASCADE , related_name = 'PharmInCity' ) 
+    location = models.ForeignKey( City , on_delete = models.CASCADE , related_name = 'PharmInCity' ) 
     phone_number = models.CharField( max_length = 10 , null = False , blank = False , unique = True ) 
     email = models.EmailField() 
     
@@ -37,8 +37,8 @@ class Product( models.Model ) :
     composition = models.CharField( max_length = 100 , null = False , blank = False ) 
     type = models.CharField( max_length = 50 , null = False , blank = False ) 
     dose = models.DecimalField( max_digits = 10 , decimal_places = 3 , null = True , blank = True )
-    category = models.ForeignKey( Category , on_delete = models.CASCADE , related_name = 'ProdCat' ) 
-    lab = models.ForeignKey( Lab , on_delete = models.CASCADE , related_name = 'ProdLab' )
+    categ = models.ForeignKey( Category , on_delete = models.CASCADE , related_name = 'ProdCat' ) 
+    man_lab = models.ForeignKey( Lab , on_delete = models.CASCADE , related_name = 'ProdLab' )
     description = models.TextField( null = True , blank = True ) 
     needs_perscription = models.BooleanField( default = False ) 
     prod_date = models.DateField()
